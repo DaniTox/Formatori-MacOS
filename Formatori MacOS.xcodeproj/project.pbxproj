@@ -18,6 +18,8 @@
 		DBD401F61FEFADA600F0D599 /* Verifica.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F11FEFADA600F0D599 /* Verifica.swift */; };
 		DBD401F81FEFADC600F0D599 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F71FEFADC600F0D599 /* Links.swift */; };
 		DBD401FA1FEFADFF00F0D599 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F91FEFADFF00F0D599 /* Constants.swift */; };
+		DBD401FD1FEFC99D00F0D599 /* CreateVerificaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401FC1FEFC99C00F0D599 /* CreateVerificaVC.swift */; };
+		DBD402001FEFE3B100F0D599 /* VerificheVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401FE1FEFE3B100F0D599 /* VerificheVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		DBD401F71FEFADC600F0D599 /* Links.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		DBD401F91FEFADFF00F0D599 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBD401FB1FEFB1A800F0D599 /* Formatori MacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Formatori MacOS.entitlements"; sourceTree = "<group>"; };
+		DBD401FC1FEFC99C00F0D599 /* CreateVerificaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateVerificaVC.swift; sourceTree = "<group>"; };
+		DBD401FE1FEFE3B100F0D599 /* VerificheVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificheVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				DBD401DC1FEFA89000F0D599 /* LoginVC.swift */,
+				DBD401FC1FEFC99C00F0D599 /* CreateVerificaVC.swift */,
+				DBD401FE1FEFE3B100F0D599 /* VerificheVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -189,7 +195,9 @@
 				DBD401F51FEFADA600F0D599 /* Response.swift in Sources */,
 				DBD401F21FEFADA600F0D599 /* Loader.swift in Sources */,
 				DBD401F81FEFADC600F0D599 /* Links.swift in Sources */,
+				DBD402001FEFE3B100F0D599 /* VerificheVC.swift in Sources */,
 				DBD401FA1FEFADFF00F0D599 /* Constants.swift in Sources */,
+				DBD401FD1FEFC99D00F0D599 /* CreateVerificaVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

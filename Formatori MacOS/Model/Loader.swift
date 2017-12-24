@@ -14,6 +14,10 @@ class Loader {
     
     func createVerifica(materia: String, argomento: String, classe: String, data: Date) {
         if materia.isEmpty || argomento.isEmpty || classe.isEmpty || tempFormatore?.token == nil { return }
+        if materia == "Seleziona una materia" || classe == "Scegli una classe" {
+            delegate?.didCreateVerificaWithReturnCode!(1, and: "Assicurati di aver selezionato una materia e una classe")
+            return
+        }
         guard let arg = argomento.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlPathAllowed) else { print("Errore converting path: createVerifica"); return }
         let link = "\(Links.createVerifica)?materia=\(materia)&titolo=\(arg)&classe=\(classe)&data=\(data.string)&token=\(tempFormatore!.token!)"
         guard let url = URL(string: link) else { print("Error link: \(link)"); return }

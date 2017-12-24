@@ -10,7 +10,6 @@ import Foundation
 
 var verifiche : [Verifica] = []
 
-
 var tempFormatore : Formatore?
 
 var savedData : [String: String]? {
@@ -28,26 +27,6 @@ var savedData : [String: String]? {
 }
 
 
-//var formatore : Formatore? {
-//    if let data = UserDefaults.standard.data(forKey: "formatore") {
-//        if let temp = try? JSONDecoder().decode(Formatore.self, from: data) {
-//            return temp
-//        }
-//    }
-//    if let form = tempFormatore { return form }
-//
-//    return nil
-//}
-
-
-//extension UIViewController {
-//    func getAlert(title: String, message : String) -> UIAlertController {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-//        return alert
-//    }
-//}
-
 extension Date {
     var string : String {
         let c = Calendar.current
@@ -60,6 +39,9 @@ extension Date {
     }
 }
 
+
+
+let classi : [String] = ["1E", "2E", "3E", "4E", "1M", "2M", "3M", "4M"]
 
 let materie : [String] = [
     "Italiano",

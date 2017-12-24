@@ -114,13 +114,25 @@ extension LoginVC : responseDelegate {
                 else {
                     savedData = nil
                 }
+                
+                NSApplication.shared.mainWindow?.close()
+                self.performSegue(withIdentifier: NSStoryboardSegue.Identifier("showHomeVC"), sender: self)
             }
             
         }
     }
 }
 
-
+extension NSViewController {
+    func getAlert(title: String, msg: String) -> NSAlert {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Ok")
+        alert.messageText = title
+        alert.informativeText = msg
+        return alert
+    }
+}
 
 
 
