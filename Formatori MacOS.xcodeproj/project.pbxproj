@@ -8,19 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		DBD401DB1FEFA89000F0D599 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401DA1FEFA89000F0D599 /* AppDelegate.swift */; };
-		DBD401DD1FEFA89000F0D599 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401DC1FEFA89000F0D599 /* ViewController.swift */; };
+		DBD401DD1FEFA89000F0D599 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401DC1FEFA89000F0D599 /* LoginVC.swift */; };
 		DBD401DF1FEFA89000F0D599 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBD401DE1FEFA89000F0D599 /* Assets.xcassets */; };
 		DBD401E21FEFA89000F0D599 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBD401E01FEFA89000F0D599 /* Main.storyboard */; };
+		DBD401F21FEFADA600F0D599 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401ED1FEFADA500F0D599 /* Loader.swift */; };
+		DBD401F31FEFADA600F0D599 /* Formatore.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401EE1FEFADA500F0D599 /* Formatore.swift */; };
+		DBD401F41FEFADA600F0D599 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401EF1FEFADA600F0D599 /* Auth.swift */; };
+		DBD401F51FEFADA600F0D599 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F01FEFADA600F0D599 /* Response.swift */; };
+		DBD401F61FEFADA600F0D599 /* Verifica.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F11FEFADA600F0D599 /* Verifica.swift */; };
+		DBD401F81FEFADC600F0D599 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F71FEFADC600F0D599 /* Links.swift */; };
+		DBD401FA1FEFADFF00F0D599 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD401F91FEFADFF00F0D599 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DBD401D71FEFA89000F0D599 /* Formatori MacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formatori MacOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD401DA1FEFA89000F0D599 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBD401DC1FEFA89000F0D599 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DBD401DC1FEFA89000F0D599 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DBD401DE1FEFA89000F0D599 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBD401E11FEFA89000F0D599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBD401E31FEFA89000F0D599 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBD401E41FEFA89000F0D599 /* Formatori_MacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Formatori_MacOS.entitlements; sourceTree = "<group>"; };
+		DBD401ED1FEFADA500F0D599 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		DBD401EE1FEFADA500F0D599 /* Formatore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatore.swift; sourceTree = "<group>"; };
+		DBD401EF1FEFADA600F0D599 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		DBD401F01FEFADA600F0D599 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		DBD401F11FEFADA600F0D599 /* Verifica.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Verifica.swift; sourceTree = "<group>"; };
+		DBD401F71FEFADC600F0D599 /* Links.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
+		DBD401F91FEFADFF00F0D599 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DBD401FB1FEFB1A800F0D599 /* Formatori MacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Formatori MacOS.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,14 +68,46 @@
 		DBD401D91FEFA89000F0D599 /* Formatori MacOS */ = {
 			isa = PBXGroup;
 			children = (
-				DBD401DA1FEFA89000F0D599 /* AppDelegate.swift */,
-				DBD401DC1FEFA89000F0D599 /* ViewController.swift */,
-				DBD401DE1FEFA89000F0D599 /* Assets.xcassets */,
+				DBD401FB1FEFB1A800F0D599 /* Formatori MacOS.entitlements */,
+				DBD401EC1FEFAD7800F0D599 /* Model */,
+				DBD401EB1FEFAD6D00F0D599 /* View Controllers */,
 				DBD401E01FEFA89000F0D599 /* Main.storyboard */,
 				DBD401E31FEFA89000F0D599 /* Info.plist */,
+				DBD401EA1FEFA8E400F0D599 /* Supporting Files */,
 				DBD401E41FEFA89000F0D599 /* Formatori_MacOS.entitlements */,
 			);
 			path = "Formatori MacOS";
+			sourceTree = "<group>";
+		};
+		DBD401EA1FEFA8E400F0D599 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DBD401DA1FEFA89000F0D599 /* AppDelegate.swift */,
+				DBD401DE1FEFA89000F0D599 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DBD401EB1FEFAD6D00F0D599 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DBD401DC1FEFA89000F0D599 /* LoginVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		DBD401EC1FEFAD7800F0D599 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DBD401F91FEFADFF00F0D599 /* Constants.swift */,
+				DBD401F71FEFADC600F0D599 /* Links.swift */,
+				DBD401EF1FEFADA600F0D599 /* Auth.swift */,
+				DBD401EE1FEFADA500F0D599 /* Formatore.swift */,
+				DBD401ED1FEFADA500F0D599 /* Loader.swift */,
+				DBD401F01FEFADA600F0D599 /* Response.swift */,
+				DBD401F11FEFADA600F0D599 /* Verifica.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +181,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD401DD1FEFA89000F0D599 /* ViewController.swift in Sources */,
+				DBD401F41FEFADA600F0D599 /* Auth.swift in Sources */,
+				DBD401DD1FEFA89000F0D599 /* LoginVC.swift in Sources */,
+				DBD401F31FEFADA600F0D599 /* Formatore.swift in Sources */,
+				DBD401F61FEFADA600F0D599 /* Verifica.swift in Sources */,
 				DBD401DB1FEFA89000F0D599 /* AppDelegate.swift in Sources */,
+				DBD401F51FEFADA600F0D599 /* Response.swift in Sources */,
+				DBD401F21FEFADA600F0D599 /* Loader.swift in Sources */,
+				DBD401F81FEFADC600F0D599 /* Links.swift in Sources */,
+				DBD401FA1FEFADFF00F0D599 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Formatori MacOS/Formatori_MacOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Formatori MacOS/Formatori MacOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;
@@ -279,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Formatori MacOS/Formatori_MacOS.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Formatori MacOS/Formatori MacOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = Q5WYV8U42F;

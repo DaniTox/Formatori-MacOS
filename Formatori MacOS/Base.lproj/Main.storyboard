@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +676,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Formatori_MacOS" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -688,7 +691,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-			<connections>
+                        <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
@@ -700,18 +703,113 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginVC-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LoginVC" id="XfG-lQ-9wD" customClass="LoginVC" customModule="Formatori_MacOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="642" height="338"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0o0-UU-27U">
+                                <rect key="frame" x="183" y="277" width="276" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0o0-UU-27U" secondAttribute="height" multiplier="136:25" id="CHy-hv-sDz"/>
+                                    <constraint firstAttribute="height" constant="50" id="GU7-z9-xDU"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Accedi" id="Ia7-dn-kuJ">
+                                    <font key="font" metaFont="systemBold" size="35"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-1f-Al4">
+                                <rect key="frame" x="280" y="38" width="82" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="E3C-Bv-mAa"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Accedi" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="q3d-0A-eDM">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="login:" target="XfG-lQ-9wD" id="WDb-ij-VyQ"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="b1u-lv-Jzb">
+                                <rect key="frame" x="280" y="119" width="83" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="zl5-zu-Pmt"/>
+                                </constraints>
+                                <buttonCell key="cell" type="check" title="Ricordami" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4YY-dp-gRr">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <secureTextField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="42W-nG-Mei">
+                                <rect key="frame" x="187" y="168" width="268" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="8wZ-hD-eol"/>
+                                    <constraint firstAttribute="width" secondItem="42W-nG-Mei" secondAttribute="height" multiplier="134:11" id="ibX-BG-Ran"/>
+                                </constraints>
+                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Password" drawsBackground="YES" usesSingleLineMode="YES" id="a4P-rO-3dV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <allowedInputSourceLocales>
+                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                    </allowedInputSourceLocales>
+                                </secureTextFieldCell>
+                            </secureTextField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s7q-PU-DpQ">
+                                <rect key="frame" x="186" y="232" width="270" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="s7q-PU-DpQ" secondAttribute="height" multiplier="135:11" id="IhJ-06-GAE"/>
+                                    <constraint firstAttribute="height" constant="22" id="fPU-hY-rMZ"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Nome Formatore" drawsBackground="YES" id="OvZ-8F-cIj">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="b1u-lv-Jzb" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="CVI-g8-PwK"/>
+                            <constraint firstAttribute="bottom" secondItem="5QT-1f-Al4" secondAttribute="bottom" constant="45" id="HLb-07-i2s"/>
+                            <constraint firstItem="5QT-1f-Al4" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="JON-sw-1hH"/>
+                            <constraint firstItem="42W-nG-Mei" firstAttribute="top" secondItem="s7q-PU-DpQ" secondAttribute="bottom" constant="42" id="OM2-XS-xza"/>
+                            <constraint firstItem="s7q-PU-DpQ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="fKo-sA-jaw"/>
+                            <constraint firstItem="5QT-1f-Al4" firstAttribute="top" secondItem="b1u-lv-Jzb" secondAttribute="bottom" constant="55" id="mZd-tX-FeN"/>
+                            <constraint firstItem="42W-nG-Mei" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="q0o-6s-5Aw"/>
+                            <constraint firstItem="0o0-UU-27U" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="w2U-Ey-b7l"/>
+                            <constraint firstItem="s7q-PU-DpQ" firstAttribute="top" secondItem="0o0-UU-27U" secondAttribute="bottom" constant="23" id="z7k-DQ-Z4G"/>
+                            <constraint firstItem="b1u-lv-Jzb" firstAttribute="top" secondItem="42W-nG-Mei" secondAttribute="bottom" constant="27" id="zkE-fK-iVO"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nomeTextField" destination="s7q-PU-DpQ" id="wD6-Sh-paQ"/>
+                        <outlet property="passwordTextField" destination="42W-nG-Mei" id="RFX-lx-ix4"/>
+                        <outlet property="saveMeButton" destination="b1u-lv-Jzb" id="sUE-g5-pSL"/>
+                        <segue destination="Lya-HI-Emu" kind="modal" identifier="showHomeVC" id="4kD-PA-KQM"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="74" y="748"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="OnE-CW-PCd">
+            <objects>
+                <viewController id="Lya-HI-Emu" sceneMemberID="viewController">
+                    <view key="view" id="Jkn-Qi-FOJ">
+                        <rect key="frame" x="0.0" y="0.0" width="574" height="338"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="SSI-76-lQ3" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="803" y="748"/>
         </scene>
     </scenes>
 </document>
