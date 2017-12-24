@@ -12,8 +12,10 @@ class VerificheVC: NSViewController {
 
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var segControl: NSSegmentedControl!
+    @IBOutlet weak var eliminaOutlet: NSButton!
     
     var filterMode : ((Verifica) -> Bool)? = { return $0.idVerifica != -1 }
+    var verificaSelected : Verifica?
     
     var loader : Loader?
     override func viewDidLoad() {
@@ -37,6 +39,12 @@ class VerificheVC: NSViewController {
     }
     
     
+    @IBAction func eliminaAction(_ sender: NSButton) {
+        verificaSelected = correctVerifiche[tableView.selectedRow]
+        loader?.removeVerifica(id: verificaSelected!.idVerifica)
+    }
+    
+    
 }
 
 extension VerificheVC : NSTableViewDelegate, NSTableViewDataSource {
@@ -53,8 +61,16 @@ extension VerificheVC : NSTableViewDelegate, NSTableViewDataSource {
         return correctVerifiche.count
     }
     
-    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if tableView.selectedRowIndexes.count > 0 {
+            eliminaOutlet.isEnabled = true
+        } else {
+            eliminaOutlet.isEnabled = false
+        }
         
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         var text = ""
         
         if tableColumn == tableView.tableColumns[0] {
@@ -97,4 +113,23 @@ extension VerificheVC : LoaderDelegate {
             }
         }
     }
+    
+    func didRemoveVerificaWith(code: Int, andMsg message: String?) {
+        if code != 0 {
+            DispatchQueue.main.async {
+                self.getAlert(title: "Errore", msg: message ?? "Errore generico").runModal()
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.getAlert(title: "Completato", msg: "Verifica eliminata con successo").runModal()
+                for (i, verifica) in verifiche.enumerated() {
+                    if verifica.idVerifica == self.verificaSelected?.idVerifica {
+                        verifiche.remove(at: i)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
 }

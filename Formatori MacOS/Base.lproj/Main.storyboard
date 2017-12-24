@@ -1172,6 +1172,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bv-Vd-DSt">
+                                <rect key="frame" x="668" y="425" width="81" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Elimina" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4Ji-CY-wuH">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="eliminaAction:" target="MT7-MX-opL" id="Wse-Yq-X08"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="a1D-5S-1DI" firstAttribute="top" secondItem="IoI-sA-ETJ" secondAttribute="bottom" constant="8" id="3Kj-tp-Bnf"/>
@@ -1186,6 +1197,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="eliminaOutlet" destination="1bv-Vd-DSt" id="mBM-hu-5d9"/>
                         <outlet property="segControl" destination="a1D-5S-1DI" id="W1C-Oo-IyE"/>
                         <outlet property="tableView" destination="b0u-wy-avo" id="wkW-DU-03H"/>
                     </connections>
