@@ -55,12 +55,14 @@ class LoginVC: NSViewController {
             }
         }
         
-        if nome.isEmpty {
-            
-        }
-        
     }
 
+    override func viewDidAppear() {
+        if nome.isEmpty {
+            nomeTextField.becomeFirstResponder()
+        }
+    }
+    
     override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
@@ -91,6 +93,17 @@ extension LoginVC : responseDelegate {
     func loginDidFinish(with code: Int, and message: String?) {
         if code == 1 {
             print("Errore: \(message!)")
+            if let msg = message {
+                DispatchQueue.main.async {
+                    let alert = NSAlert()
+                    alert.alertStyle = .warning
+                    alert.addButton(withTitle: "Ok")
+                    alert.messageText = "Errore"
+                    alert.informativeText = msg
+                    alert.runModal()
+                }
+            }
+            
         }
         else {
             print("Formatore ottenuto con successo: \(tempFormatore?.nome ?? "Errore")")
