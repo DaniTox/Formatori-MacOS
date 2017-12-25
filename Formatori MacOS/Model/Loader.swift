@@ -81,6 +81,26 @@ class Loader {
         }.resume()
     }
     
+    
+    func set_ver_to_done_state(idVerifica: Int) {
+        if tempFormatore?.token == nil { return }
+        if idVerifica < 0 { return }
+        let link = "\(Links.setVerificaCorretta)?token=\(tempFormatore!.token!)&idVerifica=\(idVerifica)"
+        guard let url = URL(string: link) else { print("Error link: \(link)"); return }
+        
+        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
+            guard let data = data else { return }
+            
+            let json = try? JSONDecoder().decode(Response.self, from: data)
+            if json?.code != "200" {
+                self?.delegate?.set_ver_state_doneDidFinish!(code: 1, andMsg: json?.message ?? "Errore generico")
+            }
+            else {
+                self?.delegate?.set_ver_state_doneDidFinish!(code: 0, andMsg: nil)
+            }
+        }.resume()
+    }
+    
 }
 
 
@@ -88,6 +108,7 @@ class Loader {
     @objc optional func didCreateVerificaWithReturnCode(_ code : Int, and message: String?)
     @objc optional func didFinishLoadVerificheWith(_ code: Int, and message: String?)
     @objc optional func didRemoveVerificaWith(code: Int, andMsg message: String?)
+    @objc optional func set_ver_state_doneDidFinish(code: Int, andMsg message : String?)
 }
 
 

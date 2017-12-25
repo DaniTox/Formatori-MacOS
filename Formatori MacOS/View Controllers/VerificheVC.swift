@@ -44,6 +44,12 @@ class VerificheVC: NSViewController {
         loader?.removeVerifica(id: verificaSelected!.idVerifica)
     }
     
+    @IBAction func setCorretta(_ sender: NSButton) {
+        verificaSelected = correctVerifiche[tableView.selectedRow]
+        if let ver = verificaSelected {
+            loader?.set_ver_to_done_state(idVerifica: ver.idVerifica)
+        }
+    }
     
 }
 
@@ -122,6 +128,25 @@ extension VerificheVC : LoaderDelegate {
         } else {
             DispatchQueue.main.async {
                 self.getAlert(title: "Completato", msg: "Verifica eliminata con successo").runModal()
+                for (i, verifica) in verifiche.enumerated() {
+                    if verifica.idVerifica == self.verificaSelected?.idVerifica {
+                        verifiche.remove(at: i)
+                    }
+                }
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func set_ver_state_doneDidFinish(code: Int, andMsg message: String?) {
+        if code != 0 {
+            DispatchQueue.main.async {
+                self.getAlert(title: "Errore", msg: message ?? "Errore generico").runModal()
+            }
+        }
+        else {
+            DispatchQueue.main.async {
+                self.getAlert(title: "Successo!", msg: "La verifica è stata modificata come corretta senza aver ricevuto problemi").runModal()
                 for (i, verifica) in verifiche.enumerated() {
                     if verifica.idVerifica == self.verificaSelected?.idVerifica {
                         verifiche.remove(at: i)
