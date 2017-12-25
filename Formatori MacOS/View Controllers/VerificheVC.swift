@@ -20,6 +20,7 @@ class VerificheVC: NSViewController {
     var loader : Loader?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         loader = Loader()
         loader?.delegate = self
         
