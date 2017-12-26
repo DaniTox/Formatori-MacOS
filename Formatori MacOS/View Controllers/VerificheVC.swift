@@ -43,7 +43,14 @@ class VerificheVC: NSViewController {
     @IBAction func eliminaAction(_ sender: NSButton) {
         if tableView.selectedRow == -1 { return }
         verificaSelected = correctVerifiche[tableView.selectedRow]
-        loader?.removeVerifica(id: verificaSelected!.idVerifica)
+
+        if getCodeFormAlert(firstB: "Si", secondB: "No", titolo: "Attenzione", info: "Sei sicuro di voler eliminare la verifica? Questa operazione non può essere annullata") == true {
+            print("Elimino verifica")
+            loader?.removeVerifica(id: verificaSelected!.idVerifica)
+        }
+        
+        
+        
     }
     
     @IBAction func setCorretta(_ sender: NSButton) {
@@ -160,4 +167,18 @@ extension VerificheVC : LoaderDelegate {
         }
     }
     
+}
+
+
+extension NSViewController {
+    func getCodeFormAlert(firstB : String, secondB : String, titolo: String, info: String) -> Bool {
+        let alert = NSAlert()
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: firstB)
+        alert.addButton(withTitle: secondB)
+        alert.messageText = titolo
+        alert.informativeText = info
+        
+        return alert.runModal() == .alertFirstButtonReturn
+    }
 }
