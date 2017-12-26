@@ -41,11 +41,13 @@ class VerificheVC: NSViewController {
     
     
     @IBAction func eliminaAction(_ sender: NSButton) {
+        if tableView.selectedRow == -1 { return }
         verificaSelected = correctVerifiche[tableView.selectedRow]
         loader?.removeVerifica(id: verificaSelected!.idVerifica)
     }
     
     @IBAction func setCorretta(_ sender: NSButton) {
+        if tableView.selectedRow == -1 { return }
         verificaSelected = correctVerifiche[tableView.selectedRow]
         if let ver = verificaSelected {
             loader?.set_ver_to_done_state(idVerifica: ver.idVerifica)
