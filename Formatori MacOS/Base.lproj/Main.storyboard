@@ -775,21 +775,31 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="l77-FN-CLy">
+                                <rect key="frame" x="202" y="6" width="239" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="Qhr-dZ-SfM"/>
+                                    <constraint firstAttribute="height" constant="18" id="jZP-ZX-YLM"/>
+                                </constraints>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="b1u-lv-Jzb" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="CVI-g8-PwK"/>
                             <constraint firstAttribute="bottom" secondItem="5QT-1f-Al4" secondAttribute="bottom" constant="45" id="HLb-07-i2s"/>
                             <constraint firstItem="5QT-1f-Al4" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="JON-sw-1hH"/>
+                            <constraint firstItem="l77-FN-CLy" firstAttribute="top" secondItem="5QT-1f-Al4" secondAttribute="bottom" constant="20" id="LYj-ds-5TS"/>
                             <constraint firstItem="42W-nG-Mei" firstAttribute="top" secondItem="s7q-PU-DpQ" secondAttribute="bottom" constant="42" id="OM2-XS-xza"/>
                             <constraint firstItem="s7q-PU-DpQ" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="fKo-sA-jaw"/>
                             <constraint firstItem="5QT-1f-Al4" firstAttribute="top" secondItem="b1u-lv-Jzb" secondAttribute="bottom" constant="55" id="mZd-tX-FeN"/>
                             <constraint firstItem="42W-nG-Mei" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="q0o-6s-5Aw"/>
+                            <constraint firstItem="l77-FN-CLy" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="u8U-EL-pH5"/>
                             <constraint firstItem="0o0-UU-27U" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="w2U-Ey-b7l"/>
                             <constraint firstItem="s7q-PU-DpQ" firstAttribute="top" secondItem="0o0-UU-27U" secondAttribute="bottom" constant="23" id="z7k-DQ-Z4G"/>
                             <constraint firstItem="b1u-lv-Jzb" firstAttribute="top" secondItem="42W-nG-Mei" secondAttribute="bottom" constant="27" id="zkE-fK-iVO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingBar" destination="l77-FN-CLy" id="Vqh-GY-yhy"/>
                         <outlet property="nomeTextField" destination="s7q-PU-DpQ" id="wD6-Sh-paQ"/>
                         <outlet property="passwordTextField" destination="42W-nG-Mei" id="RFX-lx-ix4"/>
                         <outlet property="saveMeButton" destination="b1u-lv-Jzb" id="sUE-g5-pSL"/>
@@ -952,12 +962,24 @@
                                     <action selector="creaVerifica:" target="Eic-do-xmT" id="eH2-Yl-KDL"/>
                                 </connections>
                             </button>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="cgm-Kf-Fn5">
+                                <rect key="frame" x="242" y="18" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EdH-h5-Faw"/>
+                                    <constraint firstAttribute="height" constant="18" id="MfE-53-NNK"/>
+                                </constraints>
+                            </progressIndicator>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cgm-Kf-Fn5" secondAttribute="bottom" constant="19" id="chz-z4-rfw"/>
+                            <constraint firstItem="cgm-Kf-Fn5" firstAttribute="centerX" secondItem="ZVj-zn-yuw" secondAttribute="centerX" id="hOg-Ue-EEp"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="argomentoTextField" destination="XLP-N8-iGX" id="zJR-95-xjJ"/>
                         <outlet property="classePopButton" destination="0Ug-Ok-tWT" id="bYs-Jt-h0T"/>
                         <outlet property="datePicker" destination="Qde-Po-ktB" id="D4L-C1-Aha"/>
+                        <outlet property="loadingBar" destination="cgm-Kf-Fn5" id="HG9-2o-DGu"/>
                         <outlet property="selectMateriaPop" destination="jCi-1q-Yyb" id="jjk-aw-mWL"/>
                     </connections>
                 </viewController>
@@ -1177,7 +1199,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Rdm-eD-A5N"/>
                                 </constraints>
-                                <buttonCell key="cell" type="push" title="Imposta come corretta" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gbz-t1-WSr">
+                                <buttonCell key="cell" type="push" title="Imposta come corretta" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gbz-t1-WSr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1198,6 +1220,13 @@
                                     <action selector="eliminaAction:" target="MT7-MX-opL" id="Wse-Yq-X08"/>
                                 </connections>
                             </button>
+                            <progressIndicator hidden="YES" wantsLayer="YES" maxValue="100" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="5dt-tH-Efk">
+                                <rect key="frame" x="20" y="434" width="100" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="xqK-lT-2ud"/>
+                                    <constraint firstAttribute="width" constant="100" id="zP0-Se-0sc"/>
+                                </constraints>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="a1D-5S-1DI" firstAttribute="top" secondItem="IoI-sA-ETJ" secondAttribute="bottom" constant="8" id="3Kj-tp-Bnf"/>
@@ -1211,15 +1240,19 @@
                             <constraint firstAttribute="trailing" secondItem="Nek-8s-e0S" secondAttribute="trailing" constant="20" id="afZ-sG-7IP"/>
                             <constraint firstItem="IoI-sA-ETJ" firstAttribute="top" secondItem="zPp-DA-QQg" secondAttribute="top" constant="20" id="d6R-TO-iwD"/>
                             <constraint firstAttribute="trailing" secondItem="1bv-Vd-DSt" secondAttribute="trailing" constant="77" id="dWx-T4-5o2"/>
+                            <constraint firstItem="5dt-tH-Efk" firstAttribute="leading" secondItem="zPp-DA-QQg" secondAttribute="leading" constant="20" id="gic-PD-33k"/>
                             <constraint firstItem="1bv-Vd-DSt" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zPp-DA-QQg" secondAttribute="leading" id="heF-7M-LVq"/>
                             <constraint firstItem="dhq-2X-bDh" firstAttribute="leading" secondItem="zPp-DA-QQg" secondAttribute="leading" id="inX-TK-LBz"/>
                             <constraint firstItem="1bv-Vd-DSt" firstAttribute="top" secondItem="Nek-8s-e0S" secondAttribute="bottom" constant="13" id="pFv-bx-ZOd"/>
+                            <constraint firstItem="dhq-2X-bDh" firstAttribute="top" secondItem="5dt-tH-Efk" secondAttribute="bottom" constant="23" id="roq-Sg-5JX"/>
                             <constraint firstAttribute="trailing" secondItem="a1D-5S-1DI" secondAttribute="trailing" constant="-237" id="tl7-kG-3lq"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="eliminaOutlet" destination="1bv-Vd-DSt" id="mBM-hu-5d9"/>
+                        <outlet property="loadingBar" destination="5dt-tH-Efk" id="oAe-gm-Hm4"/>
                         <outlet property="segControl" destination="a1D-5S-1DI" id="W1C-Oo-IyE"/>
+                        <outlet property="setCorrectLabel" destination="Nek-8s-e0S" id="233-M5-l8Y"/>
                         <outlet property="tableView" destination="b0u-wy-avo" id="wkW-DU-03H"/>
                     </connections>
                 </viewController>

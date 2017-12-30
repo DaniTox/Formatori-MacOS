@@ -30,6 +30,23 @@ class LoginVC: NSViewController {
     @IBOutlet weak var nomeTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSSecureTextField!
     @IBOutlet weak var saveMeButton: NSButton!
+    @IBOutlet weak var loadingBar: NSProgressIndicator!
+    
+    var isLoading = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                if self?.isLoading == true {
+                    self?.loadingBar.isHidden = false
+                    self?.loadingBar.startAnimation(self)
+                }
+                else {
+                    self?.loadingBar.stopAnimation(self)
+                    self?.loadingBar.isHidden = true
+                }
+            }
+        }
+    }
+    
     
     var auther : Auth?
     
@@ -72,6 +89,7 @@ class LoginVC: NSViewController {
     @IBAction func login(_ sender: NSButton) {
         if checkInput() == false { return }
         
+        isLoading = true
         auther?.login(with: nome, password: password)
         
     }
@@ -91,6 +109,8 @@ class LoginVC: NSViewController {
 
 extension LoginVC : responseDelegate {
     func loginDidFinish(with code: Int, and message: String?) {
+        self.isLoading = false
+        
         if code == 1 {
             print("Errore: \(message!)")
             if let msg = message {

@@ -14,6 +14,22 @@ class CreateVerificaVC: NSViewController {
     @IBOutlet weak var selectMateriaPop: NSPopUpButton!
     @IBOutlet weak var argomentoTextField: NSTextField!
     @IBOutlet weak var datePicker: NSDatePicker!
+    @IBOutlet weak var loadingBar: NSProgressIndicator!
+    
+    var isLoading = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                if self?.isLoading == true {
+                    self?.loadingBar.isHidden = false
+                    self?.loadingBar.startAnimation(self)
+                }
+                else {
+                    self?.loadingBar.stopAnimation(self)
+                    self?.loadingBar.isHidden = true
+                }
+            }
+        }
+    }
     
     var materia : String { return selectMateriaPop.selectedItem?.title ?? "nil" }
     var classe : String { return classePopButton.selectedItem?.title ?? "nil" }
@@ -36,13 +52,15 @@ class CreateVerificaVC: NSViewController {
     }
     
     @IBAction func creaVerifica(_ sender: NSButton) {
+        isLoading = true
         loader?.createVerifica(materia: materia, argomento: argomento, classe: classe, data: data)
     }
 }
 
 extension CreateVerificaVC : LoaderDelegate {
     func didCreateVerificaWithReturnCode(_ code: Int, and message: String?) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            self?.isLoading = false
             let alert = NSAlert()
             
             alert.alertStyle = .warning

@@ -13,6 +13,38 @@ class VerificheVC: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var segControl: NSSegmentedControl!
     @IBOutlet weak var eliminaOutlet: NSButton!
+    @IBOutlet weak var setCorrectLabel: NSButton!
+    @IBOutlet weak var loadingBar: NSProgressIndicator!
+    
+    var isLoading = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                if self?.isLoading == true {
+                    self?.loadingBar.isHidden = false
+                    self?.loadingBar.startAnimation(self)
+                }
+                else {
+                    self?.loadingBar.stopAnimation(self)
+                    self?.loadingBar.isHidden = true
+                }
+            }
+        }
+    }
+    
+    var isBtnsEnabled = false {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                if self?.isBtnsEnabled == true {
+                    self?.eliminaOutlet.isEnabled = true
+                    self?.setCorrectLabel.isEnabled = true
+                }
+                else {
+                    self?.eliminaOutlet.isEnabled = false
+                    self?.setCorrectLabel.isEnabled = false
+                }
+            }
+        }
+    }
     
     var filterMode : ((Verifica) -> Bool)? = { return $0.idVerifica != -1 }
     var verificaSelected : Verifica?
@@ -24,6 +56,7 @@ class VerificheVC: NSViewController {
         loader = Loader()
         loader?.delegate = self
         
+        isLoading = true
         loader?.loadMyVerifiche()   
     }
     
@@ -46,6 +79,8 @@ class VerificheVC: NSViewController {
 
         if getCodeFormAlert(firstB: "Si", secondB: "No", titolo: "Attenzione", info: "Sei sicuro di voler eliminare la verifica? Questa operazione non può essere annullata") == true {
             print("Elimino verifica")
+            
+            isLoading = true
             loader?.removeVerifica(id: verificaSelected!.idVerifica)
         }
         
@@ -57,6 +92,7 @@ class VerificheVC: NSViewController {
         if tableView.selectedRow == -1 { return }
         verificaSelected = correctVerifiche[tableView.selectedRow]
         if let ver = verificaSelected {
+            isLoading = true
             loader?.set_ver_to_done_state(idVerifica: ver.idVerifica)
         }
     }
@@ -79,9 +115,9 @@ extension VerificheVC : NSTableViewDelegate, NSTableViewDataSource {
     
     func tableViewSelectionDidChange(_ notification: Notification) {
         if tableView.selectedRowIndexes.count > 0 {
-            eliminaOutlet.isEnabled = true
+            isBtnsEnabled = true
         } else {
-            eliminaOutlet.isEnabled = false
+            isBtnsEnabled = false
         }
         
     }
@@ -113,6 +149,7 @@ extension VerificheVC : NSTableViewDelegate, NSTableViewDataSource {
 
 extension VerificheVC : LoaderDelegate {
     func didFinishLoadVerificheWith(_ code: Int, and message: String?) {
+        self.isLoading = false
         if code != 0 {
             DispatchQueue.main.async {
                 let alert = NSAlert()
@@ -131,6 +168,7 @@ extension VerificheVC : LoaderDelegate {
     }
     
     func didRemoveVerificaWith(code: Int, andMsg message: String?) {
+        self.isLoading = false
         if code != 0 {
             DispatchQueue.main.async {
                 self.getAlert(title: "Errore", msg: message ?? "Errore generico").runModal()
@@ -149,6 +187,7 @@ extension VerificheVC : LoaderDelegate {
     }
     
     func set_ver_state_doneDidFinish(code: Int, andMsg message: String?) {
+        self.isLoading = false
         if code != 0 {
             DispatchQueue.main.async {
                 self.getAlert(title: "Errore", msg: message ?? "Errore generico").runModal()
