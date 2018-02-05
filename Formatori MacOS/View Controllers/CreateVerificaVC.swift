@@ -31,7 +31,7 @@ class CreateVerificaVC: NSViewController {
         }
     }
     
-    var materia : String { return selectMateriaPop.selectedItem?.title ?? "nil" }
+    var materia : String { return selectMateriaPop.selectedItem?.title.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "nil" }
     var classe : String { return classePopButton.selectedItem?.title ?? "nil" }
     var argomento : String { return argomentoTextField.stringValue }
     var data : Date { return datePicker.dateValue }
